@@ -98,11 +98,11 @@ jobs:
         make -j$(nproc) V=s
 
     - name: Delete no use files
-      working-directory: ./openwrt
+      working-directory: ./openwrt/bin
       run: |
-        cd bin/targets/*/*
-        rm -rf packages && mkdir packages
-        
+        cp targets/*/*/*.bin .
+        rm -rf packages
+        rm -rf targets
 
     - name: Upload artifact
       uses: actions/upload-artifact@master
